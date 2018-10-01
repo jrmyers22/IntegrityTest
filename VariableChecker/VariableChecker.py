@@ -19,26 +19,26 @@ class VariableChecker:
             for line in lines :
                 if line.__contains__("int"):
                     lineSplit = re.split(' ', line)
-                    varName = lineSplit[2]
+                    varName = lineSplit[1]
                     c.execute(''' INSERT INTO variables VALUES ({}, {},)
                     '''.format(student_name, varName))
                 elif line.__contains__("boolean"):
                     lineSplit = re.split(' ', line)
-                    varName = lineSplit[2]
+                    varName = lineSplit[1]
                     c.execute(''' INSERT INTO variables VALUES ({}, {},)
                                '''.format(student_name, varName))
                 elif line.__contains__("String"):
                     lineSplit = re.split(' ', line)
-                    varName = lineSplit[2]
+                    varName = lineSplit[1]
                     c.execute(''' INSERT INTO variables VALUES ({}, {},)
                                         '''.format(student_name, varName))
                 elif line.__contains__("double"):
                     lineSplit = re.split(' ', line)
-                    varName = lineSplit[2]
+                    varName = lineSplit[1]
                     c.execute(''' INSERT INTO variables VALUES ({}, {},)
                                         '''.format(student_name, varName))
                 elif line.__contains__("float"):
                     lineSplit = re.split(' ', line)
-                    varName = lineSplit[2]
+                    varName = lineSplit[1]
                     c.execute(''' INSERT INTO variables VALUES ({}, {},)
                                         '''.format(student_name, varName))
