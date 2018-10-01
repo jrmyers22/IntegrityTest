@@ -1,0 +1,11 @@
+int genericVar = 12;
+
+boolean truthGetter = false;
+
+while(truthGetter){
+    should get no variables
+}
+
+float hello = 12.0;
+
+String helloworld = "hello world";
