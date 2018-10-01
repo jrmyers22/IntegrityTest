@@ -1,12 +1,15 @@
 import unittest
 from VariableChecker import VariableChecker
+import os.path
 
 
 class MyTestCase(unittest.TestCase):
 
     def test_variable_checker(self):
-        VariableChecker.read_variables_in_code("../TestFiles/RandomVariableTests.txt", "Caleb Gould")
-
+        VariableChecker.create_table()
+        VariableChecker.read_variables_in_code("RandomVariableTests", "Caleb Gould")
+        VariableChecker.print_variables()
+        VariableChecker.clear_table()
 
 
 if __name__ == '__main__':
