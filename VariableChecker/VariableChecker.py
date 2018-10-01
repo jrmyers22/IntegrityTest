@@ -17,27 +17,27 @@ class VariableChecker:
         with open(file_name) as f:
             lines = f.readlines()
             for line in lines :
-                if(line.__contains__("int")):
+                if line.__contains__("int"):
                     lineSplit = re.split(' ', line)
                     varName = lineSplit[2]
                     c.execute(''' INSERT INTO variables VALUES ({}, {},)
                     '''.format(student_name, varName))
-                elif(line.__contains__("boolean")):
+                elif line.__contains__("boolean"):
                     lineSplit = re.split(' ', line)
                     varName = lineSplit[2]
                     c.execute(''' INSERT INTO variables VALUES ({}, {},)
                                '''.format(student_name, varName))
-                elif(line.__contains__("String")):
+                elif line.__contains__("String"):
                     lineSplit = re.split(' ', line)
                     varName = lineSplit[2]
                     c.execute(''' INSERT INTO variables VALUES ({}, {},)
                                         '''.format(student_name, varName))
-                elif(line.__contains__("double")):
+                elif line.__contains__("double"):
                     lineSplit = re.split(' ', line)
                     varName = lineSplit[2]
                     c.execute(''' INSERT INTO variables VALUES ({}, {},)
                                         '''.format(student_name, varName))
-                elif(line.__contains__("float")):
+                elif line.__contains__("float"):
                     lineSplit = re.split(' ', line)
                     varName = lineSplit[2]
                     c.execute(''' INSERT INTO variables VALUES ({}, {},)
