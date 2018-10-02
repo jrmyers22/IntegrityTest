@@ -10,31 +10,12 @@ def read_variables_in_code(file_name, student_name):
     with open(file_name) as f:
         lines = f.readlines()
         for line in lines :
-            if line.__contains__("int"):
+            if line.__contains__(" = "):
                 lineSplit = re.split(' ', line)
                 varName = lineSplit[1]
                 c.execute(''' INSERT INTO variables (username, variableName)
                                 VALUES ("{}", "{}");'''.format(student_name, varName))
-            elif line.__contains__("boolean"):
-                lineSplit = re.split(' ', line)
-                varName = lineSplit[1]
-                c.execute(''' INSERT INTO variables (username, variableName)
-                                VALUES ("{}", "{}");'''.format(student_name, varName))
-            elif line.__contains__("String"):
-                lineSplit = re.split(' ', line)
-                varName = lineSplit[1]
-                c.execute(''' INSERT INTO variables (username, variableName)
-                VALUES ("{}", "{}");'''.format(student_name, varName))
-            elif line.__contains__("double"):
-                lineSplit = re.split(' ', line)
-                varName = lineSplit[1]
-                c.execute(''' INSERT INTO variables (username, variableName)
-                                VALUES ("{}", "{}");'''.format(student_name, varName))
-            elif line.__contains__("float"):
-                lineSplit = re.split(' ', line)
-                varName = lineSplit[1]
-                c.execute(''' INSERT INTO variables (username, variableName)
-                                VALUES ("{}", "{}");'''.format(student_name, varName))
+
     connection.commit()
 
 # creates the table if it has been cleared
