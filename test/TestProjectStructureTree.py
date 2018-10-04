@@ -20,12 +20,12 @@ class TestProjectStructureTree(unittest.TestCase):
                     project.class_list[i].method_node_list[k].add_structure_node(structures_list[k])
 
         for j in range(project.class_numbers):
-            print(project.class_list[j].class_name)
+            self.assertEqual(project.class_list[j].class_name, class_names[j])
 
         for i in range(project.class_numbers):
             for j in range(len(method_names)):
                 for k in range(len(structures_list)):
-                    print(project.class_list[i].method_node_list[k].method_name)
+                    self.assertEqual(project.class_list[i].method_node_list[k].method_name, method_names[k])
 
 
 if __name__ == '__main__':
