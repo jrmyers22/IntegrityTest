@@ -23,7 +23,7 @@ class ClassTreeNode:
             for i in range(len(method_names)):
                 self.method_node_list.append(MethodTreeNode(method_names[i], self, structures_list))
 
-    def add_method_node(self, class_name, method_names, structures_list=None):
+    def add_method_node(self, method_names, structures_list=None):
         if self.method_node_list is None:
             self.method_node_list = []
             self.method_node_list.append(MethodTreeNode(method_names, self))

@@ -12,7 +12,7 @@ class TestProjectStructureTree(unittest.TestCase):
         project = ProjectStructureTree.ProjectNode(test_project, class_names)
         for j in range(project.class_numbers):
             for i in range(len(method_names)):
-                project.class_list[j].add_method_node(project.class_list[i].class_name, method_names[i])
+                project.class_list[j].add_method_node(method_names[i])
 
         for i in range(project.class_numbers):
             for j in range(len(method_names)):
