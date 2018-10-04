@@ -13,3 +13,5 @@ String helloworld = "hello world";
 for(int i = 0; i < length; i++){
 
 }
+
+ArrayList<E> thisIsAnArrayList = new ArrayList<E>();

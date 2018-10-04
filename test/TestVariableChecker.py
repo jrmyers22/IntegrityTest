@@ -1,6 +1,5 @@
 import unittest
-from VariableChecker import VariableChecker
-import os.path
+from DataCollection import VariableChecker
 
 
 class MyTestCase(unittest.TestCase):
