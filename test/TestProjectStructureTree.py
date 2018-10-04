@@ -19,6 +19,14 @@ class TestProjectStructureTree(unittest.TestCase):
                 for k in range(len(structures_list)):
                     project.class_list[i].method_node_list[k].add_structure_node(structures_list[k])
 
+        for j in range(project.class_numbers):
+            print(project.class_list[j].class_name)
+
+        for i in range(project.class_numbers):
+            for j in range(len(method_names)):
+                for k in range(len(structures_list)):
+                    print(project.class_list[i].method_node_list[k].method_name)
+
 
 if __name__ == '__main__':
     unittest.main()

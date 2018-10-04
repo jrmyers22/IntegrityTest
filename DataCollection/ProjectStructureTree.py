@@ -28,7 +28,7 @@ class ClassTreeNode:
             self.method_node_list = []
             self.method_node_list.append(MethodTreeNode(method_names, self))
         else:
-            self.method_node_list.append(MethodTreeNode(class_name, method_names, structures_list))
+            self.method_node_list.append(MethodTreeNode(method_names, self))
 
     def add_dependency(self, dependency_name, project_node, method_names, structures_list):
         if self.dependencies_list is None:
