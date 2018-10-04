@@ -14,15 +14,23 @@ class ProjectNode:
 
 class ClassTreeNode:
 
-    def __init__(self, class_name, super_node, method_names, structures_list):
+    def __init__(self, class_name, project_node, method_names, structures_list, dependencies_list=None):
         self.class_name = class_name
-        self.super_node = super_node
+        self.project_node = project_node
         self.method_node_list = []
+        self.dependencies_list = dependencies_list
         for i in range(len(method_names)):
             self.method_node_list.append(MethodTreeNode(method_names[i], self, structures_list))
 
     def add_method_node(self, class_name, method_names, structures_list):
         self.node_list.append(ClassTreeNode(class_name, method_names, structures_list))
+
+    def add_dependency(self, dependency_name, project_node, method_names, structures_list):
+        if self.dependencies_list is None:
+            self.dependencies_list = []
+            self.dependencies_list.append(ClassTreeNode(dependency_name, project_node, method_names, structures_list))
+        else:
+            self.dependencies_list.append(ClassTreeNode(dependency_name, project_node, method_names, structures_list))
 
 
 class MethodTreeNode:
