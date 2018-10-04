@@ -1,29 +1,34 @@
 
 class ProjectNode:
-    def __init__(self, project_name, class_names, method_names, structures_list):
+    def __init__(self, project_name, class_names):
         self.project_name = project_name
-        self.node_list = []
+        self.class_list = []
         self.class_numbers = 0
         for i in range(len(class_names)):
-            self.node_list.append(ClassTreeNode(class_names[i], self, method_names, structures_list))
+            self.class_list.append(ClassTreeNode(class_names[i], self))
             self.class_numbers = self.class_numbers + 1;
 
-    def add_class_node(self, class_name, method_names, structures_list):
-        self.node_list.append(ClassTreeNode(class_name, self, method_names, structures_list))
+    def add_class_node(self, class_name, method_names=None, structures_list=None):
+        self.class_list.append(ClassTreeNode(class_name, self, method_names, structures_list))
 
 
 class ClassTreeNode:
 
-    def __init__(self, class_name, project_node, method_names, structures_list, dependencies_list=None):
+    def __init__(self, class_name, project_node, method_names=None, structures_list=None, dependencies_list=None):
         self.class_name = class_name
         self.project_node = project_node
         self.method_node_list = []
         self.dependencies_list = dependencies_list
-        for i in range(len(method_names)):
-            self.method_node_list.append(MethodTreeNode(method_names[i], self, structures_list))
+        if method_names is not None:
+            for i in range(len(method_names)):
+                self.method_node_list.append(MethodTreeNode(method_names[i], self, structures_list))
 
-    def add_method_node(self, class_name, method_names, structures_list):
-        self.node_list.append(ClassTreeNode(class_name, method_names, structures_list))
+    def add_method_node(self, class_name, method_names, structures_list=None):
+        if self.method_node_list is None:
+            self.method_node_list = []
+            self.method_node_list.append(MethodTreeNode(method_names, self))
+        else:
+            self.method_node_list.append(MethodTreeNode(class_name, method_names, structures_list))
 
     def add_dependency(self, dependency_name, project_node, method_names, structures_list):
         if self.dependencies_list is None:
@@ -35,15 +40,20 @@ class ClassTreeNode:
 
 class MethodTreeNode:
 
-    def __init__(self, method_name, class_node, structures_list):
+    def __init__(self, method_name, class_node, structures_list=None):
         self.method_name = method_name
         self.class_node = class_node
         self.structures_nodes = []
-        for i in range(len(structures_list)):
-            self.structures_nodes.append(StructureTreeNode(structures_list[i], self))
+        if structures_list is not None:
+            for i in range(len(structures_list)):
+                self.structures_nodes.append(StructureTreeNode(structures_list[i], self))
 
     def add_structure_node(self, structure_name):
-        self.structures_nodes.append(StructureTreeNode(structure_name, self))
+        if self.structures_nodes is None:
+            self.structures_nodes = []
+            self.structures_nodes.append(StructureTreeNode(structure_name, self))
+        else:
+            self.structures_nodes.append(StructureTreeNode(structure_name, self))
 
 
 class StructureTreeNode:
